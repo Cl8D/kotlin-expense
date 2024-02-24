@@ -4,14 +4,13 @@ class ExpenseReport {
         get() = "9/12/2002"
     private var total = 0
     private var mealExpenses = 0
+    private lateinit var printer: ReportPrinter
 
     fun printReport(printer: ReportPrinter) {
+        this.printer = printer
         printHeader(printer)
-
         calculateExpenses()
-
         printExpenses(printer)
-
         printTotal(printer, mealExpenses, total)
     }
 
