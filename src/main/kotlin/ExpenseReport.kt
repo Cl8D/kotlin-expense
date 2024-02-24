@@ -8,12 +8,7 @@ class ExpenseReport {
     fun printReport(printer: ReportPrinter) {
         printHeader(printer)
 
-        for (expense in expenses) {
-            if (expense.type == Expense.Type.BREAKFAST || expense.type == Expense.Type.DINNER) {
-                mealExpenses += expense.amount
-            }
-            total += expense.amount
-        }
+        calculateExpenses()
 
         for (expense in expenses) {
             var name = "TILT"
@@ -37,6 +32,15 @@ class ExpenseReport {
         }
 
         printTotal(printer, mealExpenses, total)
+    }
+
+    private fun calculateExpenses() {
+        for (expense in expenses) {
+            if (expense.type == Expense.Type.BREAKFAST || expense.type == Expense.Type.DINNER) {
+                mealExpenses += expense.amount
+            }
+            total += expense.amount
+        }
     }
 
     private fun printTotal(printer: ReportPrinter, mealExpenses: Int, total: Int) {
