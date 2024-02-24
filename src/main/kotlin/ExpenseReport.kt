@@ -12,6 +12,10 @@ class ExpenseReport {
             if (expense.type == Expense.Type.BREAKFAST || expense.type == Expense.Type.DINNER) {
                 mealExpenses += expense.amount
             }
+            total += expense.amount
+        }
+
+        for (expense in expenses) {
             var name = "TILT"
 
             when (expense.type) {
@@ -30,8 +34,8 @@ class ExpenseReport {
                     name, expense.amount / 100.0
                 )
             )
-            total += expense.amount
         }
+
         printTotal(printer, mealExpenses, total)
     }
 
