@@ -10,6 +10,12 @@ class ExpenseReport {
 
         calculateExpenses()
 
+        printExpenses(printer)
+
+        printTotal(printer, mealExpenses, total)
+    }
+
+    private fun printExpenses(printer: ReportPrinter) {
         for (expense in expenses) {
             var name = "TILT"
 
@@ -25,13 +31,12 @@ class ExpenseReport {
                     if (expense.type == Expense.Type.DINNER
                         && expense.amount > 5000
                         || expense.type === Expense.Type.BREAKFAST
-                        && expense.amount > 1000) "X" else " ",
+                        && expense.amount > 1000
+                    ) "X" else " ",
                     name, expense.amount / 100.0
                 )
             )
         }
-
-        printTotal(printer, mealExpenses, total)
     }
 
     private fun calculateExpenses() {
