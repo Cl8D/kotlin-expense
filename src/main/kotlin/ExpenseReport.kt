@@ -36,12 +36,14 @@ class ExpenseReport {
 
     private fun calculateExpenses() {
         for (expense in expenses) {
-            if (expense.type == Expense.Type.BREAKFAST || expense.type == Expense.Type.DINNER) {
+            if (isMeal(expense)) {
                 mealExpenses += expense.amount
             }
             total += expense.amount
         }
     }
+
+    private fun isMeal(expense: Expense) = expense.type == Expense.Type.BREAKFAST || expense.type == Expense.Type.DINNER
 
     private fun printTotal(printer: ReportPrinter, mealExpenses: Int, total: Int) {
         printer.print(String.format("\nMeal expenses $%.02f", mealExpenses / 100.0))
