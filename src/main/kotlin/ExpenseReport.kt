@@ -2,11 +2,11 @@ class ExpenseReport {
     private val expenses: MutableList<Expense> = ArrayList()
     private val date: String
         get() = "9/12/2002"
+    private var total = 0
+    private var mealExpenses = 0
 
     fun printReport(printer: ReportPrinter) {
         printHeader(printer)
-        var total = 0
-        var mealExpenses = 0
 
         for (expense in expenses) {
             if (expense.type == Expense.Type.BREAKFAST || expense.type == Expense.Type.DINNER) {
