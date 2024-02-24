@@ -17,13 +17,7 @@ class ExpenseReport {
 
     private fun printExpenses(printer: ReportPrinter) {
         for (expense in expenses) {
-            var name = "TILT"
-
-            when (expense.type) {
-                Expense.Type.DINNER -> name = "Dinner"
-                Expense.Type.BREAKFAST -> name = "Breakfast"
-                Expense.Type.CAR_RENTAL -> name = "Car Rental"
-            }
+            var name = getName(expense)
 
             printer.print(
                 String.format(
@@ -37,6 +31,17 @@ class ExpenseReport {
                 )
             )
         }
+    }
+
+    private fun getName(expense: Expense): String {
+        var name = "TILT"
+
+        when (expense.type) {
+            Expense.Type.DINNER -> name = "Dinner"
+            Expense.Type.BREAKFAST -> name = "Breakfast"
+            Expense.Type.CAR_RENTAL -> name = "Car Rental"
+        }
+        return name
     }
 
     private fun calculateExpenses() {
