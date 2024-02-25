@@ -1,12 +1,12 @@
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 
-internal class ExpenseReportTest : StringSpec({
-    lateinit var report: ExpenseReport
+internal class ExpenseReporterTest : StringSpec({
+    lateinit var report: ExpenseReporter
     lateinit var printer: MockReportPrinter
 
     beforeTest {
-        report = ExpenseReport()
+        report = ExpenseReporter()
         printer = MockReportPrinter()
     }
 

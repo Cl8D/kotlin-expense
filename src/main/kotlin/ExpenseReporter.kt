@@ -1,4 +1,4 @@
-class ExpenseReport {
+class ExpenseReporter {
     private val expenses: MutableList<Expense> = ArrayList()
     private val date: String
         get() = "9/12/2002"
