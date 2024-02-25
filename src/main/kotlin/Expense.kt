@@ -1,5 +1,4 @@
 abstract class Expense(
-    var type: Type,
     var amount: Int
 ) {
     enum class Type {
