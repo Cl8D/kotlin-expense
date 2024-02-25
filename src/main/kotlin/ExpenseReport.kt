@@ -20,20 +20,24 @@ class ExpenseReport {
 
     private fun printExpenses() {
         for (expense in expenses) {
-            var name = getName(expense)
-
-            printer.print(
-                String.format(
-                    "%s\t%s\t$%.02f\n",
-                    if (expense.type == Expense.Type.DINNER
-                        && expense.amount > 5000
-                        || expense.type === Expense.Type.BREAKFAST
-                        && expense.amount > 1000
-                    ) "X" else " ",
-                    name, expense.amount / 100.0
-                )
-            )
+            printExpense(expense)
         }
+    }
+
+    private fun printExpense(expense: Expense) {
+        val name = getName(expense)
+
+        printer.print(
+            String.format(
+                "%s\t%s\t$%.02f\n",
+                if (expense.type == Expense.Type.DINNER
+                    && expense.amount > 5000
+                    || expense.type === Expense.Type.BREAKFAST
+                    && expense.amount > 1000
+                ) "X" else " ",
+                name, expense.amount / 100.0
+            )
+        )
     }
 
     private fun getName(expense: Expense): String {
