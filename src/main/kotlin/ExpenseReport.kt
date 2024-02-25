@@ -1,8 +1,9 @@
-open class ExpenseReport {
-    protected val expenses: MutableList<Expense> = ArrayList()
-    protected var total = 0
-    protected var mealExpenses = 0
-    protected fun calculateExpenses() {
+class ExpenseReport {
+    val expenses: MutableList<Expense> = ArrayList()
+    var total = 0
+    var mealExpenses = 0
+
+    fun calculateExpenses() {
         for (expense in expenses) {
             addTotal(expense)
         }
