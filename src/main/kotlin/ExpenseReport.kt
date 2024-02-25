@@ -28,15 +28,16 @@ class ExpenseReport {
         printer.print(
             String.format(
                 "%s\t%s\t$%.02f\n",
-                if (expense.type == Expense.Type.DINNER
-                    && expense.amount > 5000
-                    || expense.type === Expense.Type.BREAKFAST
-                    && expense.amount > 1000
-                ) "X" else " ",
+                if (isOverage(expense)) "X" else " ",
                 getName(expense), expense.amount / 100.0
             )
         )
     }
+
+    private fun isOverage(expense: Expense) = (expense.type == Expense.Type.DINNER
+            && expense.amount > 5000
+            || expense.type === Expense.Type.BREAKFAST
+            && expense.amount > 1000)
 
     private fun getName(expense: Expense): String {
         var name = "TILT"
