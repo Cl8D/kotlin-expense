@@ -1,4 +1,4 @@
-class Expense(
+abstract class Expense(
     var type: Type,
     var amount: Int
 ) {
