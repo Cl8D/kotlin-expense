@@ -28,26 +28,10 @@ class ExpenseReport {
         printer.print(
             String.format(
                 "%s\t%s\t$%.02f\n",
-                if (isOverage(expense)) "X" else " ",
-                getName(expense), getRate(expense.amount)
+                if (expense.isOverage()) "X" else " ",
+                expense.getName(), getRate(expense.amount)
             )
         )
-    }
-
-    private fun isOverage(expense: Expense) = (expense.type == Expense.Type.DINNER
-            && expense.amount > 5000
-            || expense.type === Expense.Type.BREAKFAST
-            && expense.amount > 1000)
-
-    private fun getName(expense: Expense): String {
-        var name = "TILT"
-
-        when (expense.type) {
-            Expense.Type.DINNER -> name = "Dinner"
-            Expense.Type.BREAKFAST -> name = "Breakfast"
-            Expense.Type.CAR_RENTAL -> name = "Car Rental"
-        }
-        return name
     }
 
     private fun calculateExpenses() {
@@ -57,13 +41,11 @@ class ExpenseReport {
     }
 
     private fun addTotal(expense: Expense) {
-        if (isMeal(expense)) {
+        if (expense.isMeal()) {
             mealExpenses += expense.amount
         }
         total += expense.amount
     }
-
-    private fun isMeal(expense: Expense) = expense.type == Expense.Type.BREAKFAST || expense.type == Expense.Type.DINNER
 
     private fun printTotal() {
         printer.print(String.format("\nMeal expenses $%.02f", getRate(mealExpenses)))
