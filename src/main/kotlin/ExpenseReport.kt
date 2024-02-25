@@ -8,8 +8,12 @@ class ExpenseReport {
 
     fun printReport(printer: ReportPrinter) {
         this.printer = printer
-        printHeader()
         calculateExpenses()
+        printExpensesAndTotal()
+    }
+
+    private fun printExpensesAndTotal() {
+        printHeader()
         printExpenses()
         printTotal()
     }
