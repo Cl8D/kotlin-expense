@@ -1,3 +1,3 @@
-class DinnerExpense(type: Type, amount: Int) : Expense(type, amount) {
+class DinnerExpense(amount: Int) : Expense(Type.DINNER, amount) {
 
 }

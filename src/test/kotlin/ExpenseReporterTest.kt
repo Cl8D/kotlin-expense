@@ -22,7 +22,7 @@ internal class ExpenseReporterTest : StringSpec({
     }
 
     "printOneDinner" {
-        report.addExpense(DinnerExpense(Expense.Type.DINNER, 1678))
+        report.addExpense(DinnerExpense(1678))
         report.printReport(printer)
 
         printer.getText() shouldBe """
@@ -35,8 +35,8 @@ internal class ExpenseReporterTest : StringSpec({
     }
 
     "twoMeals" {
-        report.addExpense(DinnerExpense(Expense.Type.DINNER, 1000))
-        report.addExpense(BreakfastExpense(Expense.Type.BREAKFAST, 500))
+        report.addExpense(DinnerExpense(1000))
+        report.addExpense(BreakfastExpense(500))
         report.printReport(printer)
 
         printer.getText() shouldBe """
@@ -50,9 +50,9 @@ internal class ExpenseReporterTest : StringSpec({
     }
 
     "twoMealsAndCarRental" {
-        report.addExpense(DinnerExpense(Expense.Type.DINNER, 1000))
-        report.addExpense(BreakfastExpense(Expense.Type.BREAKFAST, 500))
-        report.addExpense(CarRentalExpense(Expense.Type.CAR_RENTAL, 50000))
+        report.addExpense(DinnerExpense(1000))
+        report.addExpense(BreakfastExpense(500))
+        report.addExpense(CarRentalExpense(50000))
         report.printReport(printer)
 
         printer.getText() shouldBe """
@@ -67,10 +67,10 @@ internal class ExpenseReporterTest : StringSpec({
     }
 
     "overages" {
-        report.addExpense(BreakfastExpense(Expense.Type.BREAKFAST, 1000))
-        report.addExpense(BreakfastExpense(Expense.Type.BREAKFAST, 1001))
-        report.addExpense(DinnerExpense(Expense.Type.DINNER, 5000))
-        report.addExpense(DinnerExpense(Expense.Type.DINNER, 5001))
+        report.addExpense(BreakfastExpense(1000))
+        report.addExpense(BreakfastExpense(1001))
+        report.addExpense(DinnerExpense(5000))
+        report.addExpense(DinnerExpense(5001))
         report.printReport(printer)
 
         printer.getText() shouldBe """
