@@ -25,11 +25,12 @@ class ExpenseReport {
     }
 
     private fun printExpense(expense: Expense) {
+        val amount = expense.amount
         printer.print(
             String.format(
                 "%s\t%s\t$%.02f\n",
                 if (isOverage(expense)) "X" else " ",
-                getName(expense), expense.amount / 100.0
+                getName(expense), amount / 100.0
             )
         )
     }
@@ -66,8 +67,10 @@ class ExpenseReport {
     private fun isMeal(expense: Expense) = expense.type == Expense.Type.BREAKFAST || expense.type == Expense.Type.DINNER
 
     private fun printTotal() {
-        printer.print(String.format("\nMeal expenses $%.02f", mealExpenses / 100.0))
-        printer.print(String.format("\nTotal $%.02f", total / 100.0))
+        val tempMealExpense = mealExpenses
+        val tempTotal = total
+        printer.print(String.format("\nMeal expenses $%.02f", tempMealExpense / 100.0))
+        printer.print(String.format("\nTotal $%.02f", tempTotal / 100.0))
     }
 
     private fun printHeader() {
