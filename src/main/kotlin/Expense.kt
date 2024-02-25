@@ -8,21 +8,9 @@ abstract class Expense(
         CAR_RENTAL
     }
 
-    fun getName(): String {
-        var name = "TILT"
+    abstract fun getName(): String
 
-        when (this.type) {
-            Type.DINNER -> name = "Dinner"
-            Type.BREAKFAST -> name = "Breakfast"
-            Type.CAR_RENTAL -> name = "Car Rental"
-        }
-        return name
-    }
+    abstract fun isMeal(): Boolean
 
-     fun isMeal() = this.type == Type.BREAKFAST || this.type == Type.DINNER
-
-    fun isOverage() = (this.type == Type.DINNER
-            && this.amount > 5000
-            || this.type === Type.BREAKFAST
-            && this.amount > 1000)
+    abstract fun isOverage(): Boolean
 }
