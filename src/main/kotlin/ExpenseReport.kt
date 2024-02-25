@@ -8,13 +8,13 @@ class ExpenseReport {
 
     fun printReport(printer: ReportPrinter) {
         this.printer = printer
-        printHeader(printer)
+        printHeader()
         calculateExpenses()
-        printExpenses(printer)
-        printTotal(printer, mealExpenses, total)
+        printExpenses()
+        printTotal()
     }
 
-    private fun printExpenses(printer: ReportPrinter) {
+    private fun printExpenses() {
         for (expense in expenses) {
             var name = getName(expense)
 
@@ -58,12 +58,12 @@ class ExpenseReport {
 
     private fun isMeal(expense: Expense) = expense.type == Expense.Type.BREAKFAST || expense.type == Expense.Type.DINNER
 
-    private fun printTotal(printer: ReportPrinter, mealExpenses: Int, total: Int) {
+    private fun printTotal() {
         printer.print(String.format("\nMeal expenses $%.02f", mealExpenses / 100.0))
         printer.print(String.format("\nTotal $%.02f", total / 100.0))
     }
 
-    private fun printHeader(printer: ReportPrinter) {
+    private fun printHeader() {
         printer.print("Expenses " + date + "\n")
     }
 
