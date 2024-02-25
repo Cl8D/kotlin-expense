@@ -25,8 +25,6 @@ class ExpenseReport {
     }
 
     private fun printExpense(expense: Expense) {
-        val name = getName(expense)
-
         printer.print(
             String.format(
                 "%s\t%s\t$%.02f\n",
@@ -35,7 +33,7 @@ class ExpenseReport {
                     || expense.type === Expense.Type.BREAKFAST
                     && expense.amount > 1000
                 ) "X" else " ",
-                name, expense.amount / 100.0
+                getName(expense), expense.amount / 100.0
             )
         )
     }
